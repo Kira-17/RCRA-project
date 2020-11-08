@@ -1,10 +1,9 @@
 * {box-sizing: border-box}
 form{
-
-		display: inline;
-        overflow: hidden;
-        background-size: cover;
-        background-repeat: no-repeat;
+  display: inline;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
 
 }
 
@@ -31,15 +30,16 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus{
 
 
 legend{
-            font-size:43px;
-		    font-weight: 900;
-			color: #404040;
-	}
+  font-size:43px;
+  font-weight: 900;
+  color: #404040;
+}
 
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
+
 a{
   text-decoration:none;
 }
