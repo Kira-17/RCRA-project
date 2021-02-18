@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {  
+            $('.chkcvalues').click(function()
+            {
+                var txt="";
+                $('.chkcvalues:checked').each(function()
+                {
+                    txt+=$(this).val()+','
+                });
+                txt=txt.substring(0,txt.length-1);
+                $('#txtvalues').val(txt);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <a href="{%  url 'logoutp' %">Logout</a>
+    
+    {% for d in data %}
+    welcome
+    {{d.user.username}}
+    <br>
+    doctor:
+    {{d.doctorw.full_name}}
+    {% endfor %}
+
+    <form action="" method="POST"  >
+        {% csrf_token %}
+        
+        <label for=""> Temperature</label>
+        <input type="number" name="btemp" >
+
+        <br>
+
+        <input type="checkbox" value="Fever" class="chkcvalues">Fever <br>
+        <input type="checkbox" value="dry_cough" class="chkcvalues">dry cough <br>
+        <input type="checkbox" value="Headache" class="chkcvalues">Headache <br>
+        <input type="checkbox" value="Sore_Throat" class="chkcvalues">Sore_Throat <br>
+        <input type="checkbox" value="Loss_Of_Taste_Or_Smell" class="chkcvalues">Loss_Of_Taste_Or_Smell <br>
+        <input type="checkbox" value="Shortness_Of_Breath" class="chkcvalues">Shortness_Of_Breath <br>
+
+        <input type="text" name="sympt1" id="txtvalues">
+        
+
+        <input type="submit" value="Insert Record" onclick="return alert('added')"> submit
+
+
+
+    </form>
+    
+    
+    
+    
+    
+</body>
+</html>
