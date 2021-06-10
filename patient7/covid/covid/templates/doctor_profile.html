@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+</head>
+<body>
+    <a href="{%  url 'logoutp' %">Logout</a>
+    <br>
+    {% for d in data %}
+        Welcome Dr.{{d.user_doc.doctor.full_name}} !
+        <br>
+        ID:{{d.user_doc.id}}
+        <br>
+    {% endfor %}
+    <br>
+    patients under observation
+   <br>
+
+    {% for i,j in mylists %}
+        {{forloop.counter}}.
+            Patient Name:{{i.user.patient.name}}
+            <!-- <a href="{% url 'patientprofile' patient_id=i.user.id %}">hi {{i.user.patient.name}}</a> -->
+            <br>
+            user table ID:{{i.user.id}}
+            <br>
+            patient table id:{{i.id}}
+            <br>
+            username:{{i.user.username}}
+            <br>
+            age:{{i.user.patient.age}}
+            <br>
+           
+            <br>
+            {% for k in hist %}
+                {% if k.patient_fkey_id == i.id%}
+                    updated date :{{k}}
+                    <br>
+                    patient table id:{{k.patient_fkey_id}}
+                    
+                    
+                    <br>
+                    temp:{{k.btemp}}
+                    <br>
+                    symptom:{{k.sympt1}}
+                    <br>
+                    <hr>
+                    <br>
+                    <br>
+                {% endif %}
+            {% endfor %}
+            
+            -----------------------------------------
+            <br>
+        
+
+    {% endfor %}
+
+    <h1>history</h1>
+    {% for i in hist %}
+        
+        {{i}}
+        <br>
+        {{i.patient_fkey_id}}
+        <br>
+        {{i.patient_fkey}}
+        <br>
+        temp:{{i.btemp}}
+        <br>
+        symptom:{{i.sympt1}}
+        <br>
+        <br>
+    {% endfor %}
+   
+
+</body>
+</html>

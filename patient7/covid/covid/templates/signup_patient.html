@@ -1,0 +1,95 @@
+{% load static from staticfiles %}
+
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>trial</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup_patient.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet'>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    <div class="first">
+        <div class="container">
+            <legend>Sign Up</legend>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <p><h1>Patient Information</h1></p><br>
+            <label for="name"><b>Name</b></label><br>
+            <input type="text" placeholder="Enter Name" name="name" required><br>
+
+            <label for="surname"><b>Surname</b></label><br>
+            <input type="text" placeholder="Enter Surname" name="surname" required><br>
+
+            <label for="patientid"><b>ID</b></label><br>
+            <input type="text" placeholder="Enter ID" name="patient_id" required><br>
+
+            <label for="address"><b>Address</b></label><br>
+            <input type="text" placeholder="Enter Address" name="address" required><br>
+
+            <label for="number"><b>Contact No.</b></label><br>
+            <input type="number" placeholder="Enter Number" name="number" required><br>
+
+            <label for="emergency number"><b>Emergency Contact No.</b></label><br>
+            <input type="number" placeholder="Enter Number" name="emergency_number" required><br>
+
+            <label for="age"><b>Age</b></label><br>
+            <input type="number" placeholder="Enter Age" name="age" required><br>
+
+            <label for="health condition"><b>Under lying Health Conditions if any</b></label><br>
+            <input type="text" placeholder="Enter Condition" name="health_condition" required><br>
+
+            <label for="gender"><b>Gender</b></label><br><br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br><br>
+<!-- 
+            <label for="number_doc"><b>doc_id</b></label><br>
+            <input type="text" placeholder="Enter doctor ID" name="number_doc" required><br> -->
+
+
+            <label for="email"><b>Email</b></label><br>
+            <input type="text" placeholder="Enter Email" name="email" required><br>
+
+            <label for="alternate email"><b>Alternate Email id for alerts</b></label><br>
+            <input type="text" placeholder="Enter Alternate Email" name="alternate_email" required><br>
+
+            <label for="username"><b>Username</b></label><br>
+            <input type="text" placeholder="Enter Username" name="username1" required><br>
+
+            <label for="psw"><b>Password</b></label><br>
+            <input type="password" placeholder="Enter Password" name="psw" required><br><br>
+
+            <label for="passwordagain"><b> Confirm Password</b></label><br>
+            <input type="password" placeholder="Enter Password" name="passwordagain" required><br><br>
+
+            <select name="doctorr">
+                {% for doctorr in doctors %}
+                    <option value="{{doctorr.id}}">{{doctorr.full_name}}</option>
+                {% endfor %}
+            </select>
+
+            <div class="clearfix">
+                <input type="submit" value="Signup">
+                {% if messages %}
+                {% for msg in messages %}
+                    
+                <h3>{{msg}}</h3>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <br>
+    
+    <em>Already have an account? <a href="{% url 'loginp' %}">Login in</a></em>
+</form>
+</body>
+</html>
